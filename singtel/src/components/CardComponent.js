@@ -5,6 +5,7 @@ export const CardComponent = (props) => {
     const { cardNumber, cardRevealed, disableClick = false } = props.item;
     const onClickCallback = props.onClickCallback;
     const index = props.index;
+    const testId= props.testID;
     const flipAnimation = useRef(new Animated.Value(0)).current;
     const { cardWrapper, cardBack, cardFront,textStyle } = style;
     flipAnimation.addListener(({ value }) => flipRotation = value);
@@ -56,16 +57,19 @@ export const CardComponent = (props) => {
         <Pressable
             style={cardWrapper}
             onPress={onClickCards}
+            testID={testId}
         >
             <Animated.View
                 style={{ ...cardFront, ...flipToBackStyle }}
+                testID={'AnimatedViewFront'}
             >
-                <Text style={textStyle}>?</Text>
+                <Text style={textStyle} testID={'backSideText'}>?</Text>
             </Animated.View>
             <Animated.View
                 style={{ ...cardBack, ...flipToFrontStyle }}
+                testID={'AnimatedViewBack'}
             >
-                <Text style={textStyle}>{cardNumber}</Text>
+                <Text style={textStyle} testID={'frontSideText'}>{cardNumber}</Text>
             </Animated.View>
 
         </Pressable>

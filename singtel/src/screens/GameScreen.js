@@ -65,19 +65,22 @@ export const GameScreen = () => {
     return (
         <View style={containerStyle} pointerEvents={disableClick ? 'none' : 'auto'}>
             <View style={restartContainer}>
-                <TouchableOpacity onPress={onRestartPress}>
+                <TouchableOpacity onPress={onRestartPress} testID={'restart'}>
                     <Text>Restart</Text>
                 </TouchableOpacity>
-                <Text>{`Steps : ${totalSteps}`}</Text>
+                <Text testID={'steps'}>{`Steps : ${totalSteps}`}</Text>
             </View>
             <FlatList
+                testID='datalist'
                 data={cardsList}
                 keyExtractor={(_, index) => "" + index}
                 extraData={cardsList}
                 numColumns={3}
                 columnWrapperStyle={columnWrapperStyle}
                 renderItem={({ item, index }) => {
-                    return <CardComponent item={item} onClickCallback={onCardClickCallback} index={index}></CardComponent>
+                    return <CardComponent 
+                     testID={`card${index}`}
+                    item={item} onClickCallback={onCardClickCallback} index={index}></CardComponent>
                 }}
             />
         </View>

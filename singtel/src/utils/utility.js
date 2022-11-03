@@ -45,4 +45,4 @@ const setCardsData = (reqRandomNumbers) => {
 }
 
 
-export { setCardsData }
+export { setCardsData,generateRandomPairs,shuffle }
